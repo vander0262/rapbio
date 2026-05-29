@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Доктор Реппер - Контакты</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Доктор Реппер</h1>
+        <nav class="main-nav">
+            <a href="index.html">Русские</a>
+            <a href="us-rap.html">Американские</a>
+            <a href="wealth.html">💰 Имущество</a>
+            <a href="about.html">📖 О проекте</a>
+            <a href="contacts.html" class="active">📞 Контакты</a>
+        </nav>
+    </header>
+
+    <div class="contacts-container">
+        <div class="contacts-card">
+            <h2>📞 Свяжитесь с нами</h2>
+            <p>Мы всегда рады обратной связи! Если у вас есть вопросы, предложения или вы хотите добавить информацию об артисте — напишите нам.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="emoji">📧</span>
+                    <span>Email: info@doctorrapper.ru</span>
+                </div>
+                <div class="contact-item">
+                    <span class="emoji">📱</span>
+                    <span>MAX: @doctor_rapper</span>
+                </div>
+                <div class="contact-item">
+                    <span class="emoji">📷</span>
+                    <span>VK: @doctor.rapper</span>
+                </div>
+                <div class="contact-item">
+                    <span class="emoji">🐦</span>
+                    <span>Twitter: @doctor_rapper</span>
+                </div>
+                <div class="contact-item">
+                    <span class="emoji">📺</span>
+                    <span>RuTube: Доктор Реппер</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="contacts-card">
+            <h2>💬 Написать в поддержку</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Ваше имя:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email для ответа:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Тема:</label>
+                    <select id="subject" name="subject">
+                        <option value="question">Вопрос о сайте</option>
+                        <option value="artist">Добавить артиста</option>
+                        <option value="correction">Исправление ошибки</option>
+                        <option value="cooperation">Сотрудничество</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">📨 Отправить сообщение</button>
+            </form>
+            <div id="formMessage" class="form-message"></div>
+        </div>
+
+        <div class="contacts-card">
+            <h2>🗺️ Мы в соцсетях</h2>
+            <div class="social-links">
+                <a href="https://mail.ru/?from=logout&ref=main" class="social-link">📧 Email</a>
+                <a href="https://web.max.ru/" class="social-link">💬 MAX</a>
+                <a href="https://vk.com/" class="social-link">📷 VK</a>
+                <a href="https://x.com/twitter" class="social-link">🐦 Twitter</a>
+                <a href="https://www.tiktok.com/" class="social-link">🎵 TikTok</a>
+                <a href="https://rutube.ru/" class="social-link">📺 RuTube</a>
+            </div>
+            <p class="small-note">Нажимая на ссылки, вы будете перенаправлены на официальные страницы проекта в социальных сетях.</p>
+        </div>
+    </div>
+
+   
+
+    <script src="script.js"></script>
+</body>
+</html>

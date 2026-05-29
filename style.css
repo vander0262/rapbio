@@ -1,0 +1,445 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Trebuchet MS, sans-serif;
+    background: #3B0003; 
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    color: #fff;
+}
+
+/* Шапка и навигация */ 
+header {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 20px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.main-nav a:hover {
+    background: #ff6b6b;
+    transform: translateY(-2px);
+}
+
+.main-nav a.active {
+    background: #ff6b6b;
+    border-color: white;
+}
+
+/* Hero секция */
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* Контейнер для карточек */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    padding: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Карточки */
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 3px solid #0c0c0c;
+    border-radius: 20px;
+    padding: 15px;
+    width: 190px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.5);
+    border-color: #fdfcfd;
+}
+
+.card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Специальные карточки для имущества */
+.wealth-card {
+    border-color: #A9A9A9
+
+}
+
+.wealth-card:hover {
+    border-color: #98FB98;
+}
+
+/* Модальные окна */
+.bio-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+/* Активное состояние оверлея (показываем) */
+.bio-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+/* Содержимое биографии — теперь поддерживает прокрутку */
+.bio-content {
+    background: #16161D;
+    padding: 30px 30px 30px 30px;
+    border-radius: 28px;
+    width: 90%;
+    max-width: 2000px;
+    max-height: 85vh;          /* ограничиваем высоту относительно экрана */
+    overflow-y: auto;          /* включаем вертикальную прокрутку при переполнении */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 0 2px #ff6b6b;
+    position: relative;
+    text-align: left;
+    transform: scale(0.9);
+    transition: transform 0.25s ease;
+    border: 1px solid #3B0003;
+    scrollbar-width: thin;     /* тонкий скроллбар для Firefox */
+    scrollbar-color: #ff8c5a #2c3e4e;
+}
+
+/* Стилизация скроллбара для WebKit (Chrome, Safari, Edge) */
+.bio-content::-webkit-scrollbar {
+    width: 8px;
+}
+.bio-content::-webkit-scrollbar-track {
+    background: #2c3e4e;
+    border-radius: 10px;
+    margin-block: 8px;
+}
+.bio-content::-webkit-scrollbar-thumb {
+    background: #ff8c5a;
+    border-radius: 10px;
+}
+.bio-content::-webkit-scrollbar-thumb:hover {
+    background: #ff6b6b;
+}
+
+/* Анимация появления контента */
+.bio-overlay.active .bio-content {
+    transform: scale(1);
+}
+
+/* Заголовок в биографии */
+.bio-content h2 {
+    color: #ff8c5a;
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-left: 5px solid #ff6b6b;
+    padding-left: 18px;
+    font-weight: 800;
+    padding-right: 30px; /* отступ, чтобы текст не налезал на крестик */
+}
+
+/* Текст в биографии */
+.bio-content p {
+    line-height: 1.7;
+    color: #e8eef2;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* Кнопка закрытия (крестик) — фиксирована относительно содержимого */
+.close-bio {
+    position: sticky;
+    top: 5px;
+    float: right;
+    color: #ccc;
+    font-size: 36px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    line-height: 1;
+    cursor: pointer;
+    font-family: monospace;
+    background: transparent;
+    margin-right: -8px;
+    margin-top: -8px;
+    z-index: 10;
+}
+
+/* Чтобы контент не заезжал под крестик */
+.bio-content h2 {
+    clear: both;
+}
+
+.close-bio:hover {
+    color: #ff6b6b;
+}
+
+/* Страница "О проекте" */
+.about-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.about-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.about-card h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #ff8c5a;
+}
+
+.about-card h3 {
+    font-size: 24px;
+    margin: 25px 0 15px 0;
+    color: #ff8c5a;
+}
+
+.about-card p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.about-card ul {
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+
+.about-card li {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+
+
+/* Страница контактов */
+.contacts-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.contacts-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contacts-card h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #ff8c5a;
+}
+
+.contact-info {
+    margin-top: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-item .emoji {
+    font-size: 24px;
+}
+
+/* Форма */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgb(165, 165, 165);
+    font-size: 16px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.submit-btn {
+    background: #c21f1f;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.submit-btn:hover {
+    background: #ff4757;
+    transform: scale(1.02);
+}
+
+.form-message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.social-link {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s;
+}
+
+.social-link:hover {
+    background: #ff6b6b;
+    transform: translateY(-2px);
+}
+
+.small-note {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-top: 15px;
+}
+
+
+/* Адаптация */
+@media (max-width: 700px) {
+    .hero h2 {
+        font-size: 24px;
+    }
+    
+    .card {
+        width: 150px;
+        padding: 10px;
+    }
+    
+    .card img {
+        height: 150px;
+    }
+    
+    .main-nav a {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    
+    .about-card {
+        padding: 20px;
+    }
+    
+    .contacts-container {
+        grid-template-columns: 1fr;
+    }
+}
